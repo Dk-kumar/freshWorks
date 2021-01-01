@@ -27,7 +27,7 @@ export class FershWorksHomeComponent implements OnInit {
       localStorage.setItem('users', JSON.stringify(this.usersArray))
     }
     else{
-      alert(`You can't delete current user`)
+      alert(`You can't delete current present key`)
     }
   }
 

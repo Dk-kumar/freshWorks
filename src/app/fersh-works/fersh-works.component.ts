@@ -36,45 +36,22 @@ export class FershWorksComponent implements OnInit {
     });
   }
 
-//Through these only one client process  can able to access
-  signIn() {
-    this.userArray.push(JSON.parse(localStorage.getItem('users')))
-    this.userArray.filter(res => {
-      this.userArray = res
-    })
-    let val = this.userArray.filter(res => {
-      return (res.email_id.search(this.emailId) > -1) ? 1 : 0
-    })
-    if (val.length > 0) {
-      let result = this.userArray.filter(data => data.email_id === this.emailId && data.password === this.password);
-      result.filter(data => {
-        this.currentUser = data
-      })
-      //Current data are storeed in localstorage
-      localStorage.setItem('user', JSON.stringify(this.currentUser))
-      if (this.emailId === result[0].email_id) {
-        this.isLoggedIn = true;
-      }
-    }
-    else {
-      this.isAlert = true
-      this.loginError =`Wrong emailid and password`
-      console.log(this.loginError)
-    }
-  }
 //Create i.e KEY is create to store in localstorage
-  signUp() {
+  create() {
     let userForm = this.userForm.value
     this.userArray = JSON.parse(localStorage.getItem('users'))
     if (this.userArray == null) {
       this.userArray = []
-      this.userArray.push(this.userForm.value)
-      this.isLoggedIn = true
-      //All data are store in localstorage in JSON Format
-      localStorage.setItem('users', JSON.stringify(this.userArray))
+      //constraints for input key_name capped at 32chars
+      if(userForm.email_id.length <= 32){
+        this.userArray.push(this.userForm.value)
+        this.isLoggedIn = true
+        //All data are store in localstorage in JSON Format
+        localStorage.setItem('users', JSON.stringify(this.userArray))
       
-      localStorage.setItem('user', JSON.stringify(this.userForm.value))
-
+        localStorage.setItem('user', JSON.stringify(this.userForm.value))
+      }
+      
     }
 
     if (this.userArray !== null) {

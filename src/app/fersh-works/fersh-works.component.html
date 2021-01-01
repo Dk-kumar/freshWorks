@@ -2,30 +2,9 @@
     <div class="container">
         <header>
             <div class="row">
-                <div class="left">
-                    <form *ngIf='!isLoggedIn' #loginForm='ngForm'>
-                        <h4>Login</h4>
-                        <div class="col-md-6">
-                            <label>Email id:</label>
-                            <input type="email" placeholder="Enter the email id" name="email_id" 
-                            [(ngModel)]='emailId' required>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Password:</label>
-                            <input type="password" placeholder="Enter the password" name='password' 
-                            [(ngModel)]='password'>
-                        </div>
-                        <div>
-                            <p class="alert alert-danger" role="alert" *ngIf='isAlert'>{{loginError}}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-primary" [disabled]="loginForm.invalid" (click)='signIn()'>SignIn</button>
-                        </div>
-                    </form>
-                </div>
                 <div class="right">
                     <form [formGroup]='userForm' *ngIf='!isLoggedIn'>
-                        <h4> User Registration</h4>
+                        <h4>Form creation</h4>
                         <div class="col-md-6">
                             <label>Email id:</label>
                             <input type="email" placeholder="Enter the email id" 
@@ -50,7 +29,7 @@
                             formControlName='password' required>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-primary" (click)='signUp()' [disabled]="userForm.invalid">SignUp</button>
+                            <button class="btn btn-primary" (click)='create()' [disabled]="userForm.invalid">Create</button>
                         </div>
                     </form>
                 </div>
