@@ -1,0 +1,18 @@
+<div class="container">
+    <div *ngIf='!isSignOut'>
+        <h4>Welcome : {{currentUser.user_name}}</h4>
+        <button class="btn btn-secondary" (click)='signOut()'>Sign Out</button>
+        <table class="table table-sm table-hover">
+          <tr *ngFor='let users_Array of usersArray; let i = index'>
+            <td> Email_id : {{users_Array.email_id}}</td>
+            <td> User_name : {{users_Array.user_name}}</td>
+            <td> Contact : {{users_Array.contact_no}}</td>
+            <button class="btn btn-danger" (click)='deleteUser(i)'>Delete</button> 
+          </tr>
+        </table>
+      </div>
+</div>
+<div *ngIf='isSignOut'>
+    <app-fersh-works></app-fersh-works>
+</div>
+

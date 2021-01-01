@@ -1,0 +1,64 @@
+<div *ngIf='!isLoggedIn'>
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="left">
+                    <form *ngIf='!isLoggedIn' #loginForm='ngForm'>
+                        <h4>Login</h4>
+                        <div class="col-md-6">
+                            <label>Email id:</label>
+                            <input type="email" placeholder="Enter the email id" name="email_id" 
+                            [(ngModel)]='emailId' required>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Password:</label>
+                            <input type="password" placeholder="Enter the password" name='password' 
+                            [(ngModel)]='password'>
+                        </div>
+                        <div>
+                            <p class="alert alert-danger" role="alert" *ngIf='isAlert'>{{loginError}}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-primary" [disabled]="loginForm.invalid" (click)='signIn()'>SignIn</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="right">
+                    <form [formGroup]='userForm' *ngIf='!isLoggedIn'>
+                        <h4> User Registration</h4>
+                        <div class="col-md-6">
+                            <label>Email id:</label>
+                            <input type="email" placeholder="Enter the email id" 
+                            formControlName='email_id' required>
+                        </div>
+                        <div>
+                            <p class="alert alert-danger" role="alert" *ngIf='isAlertExist'>{{loginError}}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>User name:</label>
+                            <input type="text" placeholder="Enter the user name" 
+                            formControlName='user_name' required>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Contact no:</label>
+                            <input type="text" placeholder="Enter the Contact" 
+                            formControlName='contact_no' required>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Password:</label>
+                            <input type="password" placeholder="Enter the password"  
+                            formControlName='password' required>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-primary" (click)='signUp()' [disabled]="userForm.invalid">SignUp</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+
+<div *ngIf='isLoggedIn'>
+    <app-fersh-works-home></app-fersh-works-home>
+</div>
