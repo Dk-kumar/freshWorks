@@ -1,4 +1,5 @@
-Dear Recruiter, i satisfy all of condition that mentioned in problem statement, but in angular.
+Dear Recruiter,I hope you watch this, i satisfy all of condition that mentioned in problem statement, but in angular.
+
 
 Assignment
 Freshworks – Assignment
